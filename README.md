@@ -1,12 +1,72 @@
-Werkaholic AI: Ihr KI-gestützter Marktplatz-Assistent
+Der KI‑gestützte Marktplatz-Assistent für automatisierte Inserate
 
-Werkaholic AI ist eine revolutionäre Plattform, die den Prozess der Inseratserstellung für Online-Marktplätze automatisiert und optimiert. Durch den Einsatz künstlicher Intelligenz analysiert, generiert und integriert die Anwendung Anzeigen, um Ihnen einen entscheidenden Wettbewerbsvorteil zu verschaffen.
+  
+  
+  
 
-Kernfunktionen:
+Werkaholic AI ist eine moderne KI‑Plattform, die den gesamten Prozess der Inseratserstellung automatisiert.
+Die Anwendung generiert hochwertige Anzeigen, liefert strukturierte Inhalte und bietet eine flexible API, um Inserate direkt in externe Systeme oder Marktplätze einzubinden.
 
-KI-Live-Scanner: Analysieren Sie in Echtzeit bestehende Marktplatz-Inserate. Die KI erfasst und bewertet Daten, identifiziert Trends und deckt Optimierungspotenziale auf, direkt von den Quellplattformen.
-Intelligenter Inserate-Generator: Erstellen Sie in Sekundenschnelle hochwirksame und ansprechende Anzeigen. Basierend auf den gescannten Daten oder Ihren Vorgaben generiert die KI automatisch überzeugende Titel, Beschreibungen und schlägt passende Kategorien und Preise vor.
-Flexible API-Integration: Verbinden Sie Werkaholic AI nahtlos mit anderen Marktplätzen und externen APIs. Automatisieren Sie das Posten Ihrer generierten Inserate auf verschiedenen Plattformen und synchronisieren Sie Ihre Verkaufsaktivitäten.
-Zentrales Dashboard: Verwalten und überwachen Sie all Ihre generierten Inserate und deren Performance über ein einziges, intuitives Dashboard.
-Mit Werkaholic AI sparen Sie Zeit, maximieren Ihre Reichweite und steigern die Qualität Ihrer Marktplatz-Präsenz.
+📌 Inhaltsverzeichnis
+Features
 
+Technologie-Stack
+
+Installation
+
+API-Nutzung
+
+Konfiguration
+
+Roadmap
+
+Beitragen
+
+Lizenz
+
+✨ Features
+🔥 KI‑Inserate‑Generator
+Werkaholic AI erstellt vollständige, professionelle Inserate in Sekunden:
+
+Automatisch generierte Titel, Beschreibungen und Attribute
+
+Vorschläge für Kategorien und Preisbereiche
+
+Anpassbar an Produktdaten, Vorgaben oder Workflows
+
+🔗 API‑Zugang für Inserate‑Erstellung
+Perfekt für Automatisierung und Skalierung:
+
+Inserate per API generieren
+
+Inhalte in Echtzeit abrufen
+
+Integration in Shops, Marktplätze oder interne Tools
+
+Ideal für Bulk‑Erstellung und automatisierte Pipelines
+
+📊 Zentrales Dashboard
+Alles an einem Ort:
+
+Verwaltung aller generierten Inserate
+
+Qualitätskontrolle
+
+Performance‑Überblick
+
+🧠 Technologie-Stack
+Backend: Node.js  / Python
+
+API: REST / JSON
+
+Frontend: React / Next.js
+
+Datenbank: MongoDB / PostgreSQL
+
+Deployment: Docker / Cloud‑Hosting
+
+
+Pull Request öffnen
+
+📄 Lizenz
+Dieses Projekt steht unter der MIT‑Lizenz.
