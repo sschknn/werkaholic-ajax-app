@@ -1,0 +1,215 @@
+import React, { useState, Suspense } from 'react';
+import { useAuth } from './contexts/AuthContext';
+import { AuthModal } from './components/AuthModal';
+import { PaymentModal } from './components/PaymentModal';
+import { ShareModal } from './components/ShareModal';
+import { Layout } from './components/Layout';
+import { AdAnalysis } from './types';
+import { NotificationContainer } from './components/NotificationContainer';
+import { FeedbackModal } from './components/FeedbackModal';
+import { useNotifications } from './contexts/NotificationContext';
+import Loading from './components/Loading';
+import { VIEWS, ViewType } from './utils/constants';
+import { useShare } from './hooks/useShare';
+import { useDownloads } from './hooks/useDownloads';
+import { useModals } from './hooks/useModals';
+
+// Lazy loading der View-Komponenten für bessere Performance
+const DashboardView = React.lazy(() => import('./components/DashboardView'));
+const ScannerView = React.lazy(() => import('./components/ScannerView'));
+const HistoryView = React.lazy(() => import('./components/HistoryView'));
+const SettingsView = React.lazy(() => import('./components/SettingsView'));
+const AdView = React.lazy(() => import('./components/AdView'));
+
+const AppContent: React.FC = () => {
+  const { user, loading } = useAuth();
+  const { addNotification, sendPushNotification } = useNotifications();
+  const [currentView, setCurrentView] = useState<ViewType>(VIEWS.DASHBOARD);
+  const [analysisResults, setAnalysisResults] = useState<AdAnalysis[]>([]);
+
+  // Custom hooks for better separation of concerns
+  const modals = useModals();
+  const { shareResult } = useShare({ addNotification });
+  const {
+    downloadResult,
+    downloadBulkReport,
+    downloadKleinanzeigenZIP,
+    openKleinanzeige,
+  } = useDownloads({ addNotification });
+
+  const handleAnalysisComplete = (result: AdAnalysis, image: string) => {
+    setAnalysisResults(prev => [result, ...prev]);
+    console.log('Analysis completed:', result);
+
+    // Show success notification
+    addNotification({
+      type: 'success',
+      title: 'Analyse erfolgreich!',
+      message: `${result.title} wurde erfolgreich analysiert.`,
+      action: {
+        label: 'Ansehen',
+        onClick: () => setCurrentView('history')
+      }
+    });
+
+    // Send push notification if permission granted
+    sendPushNotification('Werkaholic AI', {
+      body: `${result.title} - ${result.price_estimate}`,
+      icon: '/favicon.ico',
+      badge: '/favicon.ico'
+    });
+  };
+
+  const handleCancel = () => {
+    setCurrentView(VIEWS.DASHBOARD);
+  };
+
+  const clearResults = () => {
+    setAnalysisResults([]);
+  };
+
+  const saveAdResult = (updatedResult: AdAnalysis) => {
+    // Update the result in the analysisResults array
+    setAnalysisResults(prev =>
+      prev.map(result =>
+        result.title === updatedResult.title ? updatedResult : result
+      )
+    );
+  };
+
+  if (loading) {
+    return <Loading message="Authentifizierung läuft..." />;
+  }
+
+  if (!user) {
+    return (
+      <>
+        <div className="min-h-screen bg-slate-900 flex items-center justify-center">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold text-white mb-8">Werkaholic AI</h1>
+            <p className="text-slate-400 mb-8">KI-gestützte Werbeanalyse</p>
+            <button
+              onClick={modals.openAuthModal}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold text-lg"
+            >
+              Jetzt starten
+            </button>
+          </div>
+        </div>
+        <AuthModal
+          isOpen={modals.showAuthModal}
+          onClose={modals.closeAuthModal}
+        />
+      </>
+    );
+  }
+
+  const viewComponents = {
+    dashboard: DashboardView,
+    scanner: ScannerView,
+    history: HistoryView,
+    settings: SettingsView,
+  };
+
+  const viewProps = {
+    dashboard: {
+      analysisResults,
+      onDownloadBulkReport: downloadBulkReport,
+      onDownloadKleinanzeigenZIP: downloadKleinanzeigenZIP,
+      onAnalysisComplete: handleAnalysisComplete,
+      onOpenKleinanzeige: openKleinanzeige,
+    },
+    scanner: {
+      onAnalysisComplete: handleAnalysisComplete,
+      onCancel: handleCancel,
+    },
+    history: {
+      analysisResults,
+      onClearResults: clearResults,
+      onShareResult: modals.openShareModal,
+      onDownloadResult: downloadResult,
+      onOpenResult: modals.openAdView,
+    },
+    settings: {
+      onFeedbackClick: modals.openFeedbackModal,
+    },
+  };
+
+  const renderCurrentView = () => {
+    const ViewComponent = viewComponents[currentView] || DashboardView;
+    const props = viewProps[currentView] || viewProps.dashboard;
+
+    return <ViewComponent {...props} />;
+  };
+
+  return (
+    <>
+      <Layout currentView={currentView} onViewChange={setCurrentView} analysisResults={analysisResults}>
+        {renderCurrentView()}
+
+        <PaymentModal
+          isOpen={modals.showPaymentModal}
+          onClose={modals.closePaymentModal}
+          onSuccess={() => {
+            console.log('Payment successful!');
+          }}
+        />
+
+        {modals.selectedResult && (
+          <ShareModal
+            isOpen={modals.showShareModal}
+            onClose={modals.closeShareModal}
+            result={modals.selectedResult}
+            onShare={shareResult}
+          />
+        )}
+
+        <FeedbackModal
+          isOpen={modals.showFeedbackModal}
+          onClose={modals.closeFeedbackModal}
+        />
+
+        <NotificationContainer />
+      </Layout>
+
+      {/* AdView - Full screen overlay */}
+      {modals.showAdView && modals.selectedResult && (
+        <Suspense fallback={<Loading message="Inserat wird geladen..." />}>
+          <AdView
+            result={modals.selectedResult}
+            imageData={modals.selectedAdImage}
+            onBack={modals.closeAdView}
+            onSave={saveAdResult}
+          />
+        </Suspense>
+      )}
+
+      {/* Debug: Show AdView trigger button if no results exist */}
+      {analysisResults.length === 0 && (
+        <div className="fixed bottom-5 right-5 z-[9999]">
+          <button
+            onClick={() => {
+              // Create a test result for debugging
+              const testResult = {
+                item_detected: true,
+                title: "Test Inserat",
+                price_estimate: "99€",
+                condition: "Gut",
+                category: "Elektronik",
+                description: "Dies ist ein Test-Inserat für Debugging-Zwecke.",
+                keywords: ["test", "debug", "inserat"],
+                reasoning: "Test-Daten für Debugging"
+              };
+              modals.openAdView(testResult, '');
+            }}
+            className="px-5 py-2.5 bg-blue-600 text-white border-none rounded-lg cursor-pointer hover:bg-blue-700"
+          >
+            🐛 Debug: AdView öffnen
+          </button>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default AppContent;
