@@ -1,20 +1,12 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+Werkaholic AI: Ihr KI-gestützter Marktplatz-Assistent
 
-# Run and deploy your AI Studio app
+Werkaholic AI ist eine revolutionäre Plattform, die den Prozess der Inseratserstellung für Online-Marktplätze automatisiert und optimiert. Durch den Einsatz künstlicher Intelligenz analysiert, generiert und integriert die Anwendung Anzeigen, um Ihnen einen entscheidenden Wettbewerbsvorteil zu verschaffen.
 
-This contains everything you need to run your app locally.
+Kernfunktionen:
 
-View your app in AI Studio: https://ai.studio/apps/drive/1MZuXiRBinWPQSYzydMGNZHUAkYFTB97c
+KI-Live-Scanner: Analysieren Sie in Echtzeit bestehende Marktplatz-Inserate. Die KI erfasst und bewertet Daten, identifiziert Trends und deckt Optimierungspotenziale auf, direkt von den Quellplattformen.
+Intelligenter Inserate-Generator: Erstellen Sie in Sekundenschnelle hochwirksame und ansprechende Anzeigen. Basierend auf den gescannten Daten oder Ihren Vorgaben generiert die KI automatisch überzeugende Titel, Beschreibungen und schlägt passende Kategorien und Preise vor.
+Flexible API-Integration: Verbinden Sie Werkaholic AI nahtlos mit anderen Marktplätzen und externen APIs. Automatisieren Sie das Posten Ihrer generierten Inserate auf verschiedenen Plattformen und synchronisieren Sie Ihre Verkaufsaktivitäten.
+Zentrales Dashboard: Verwalten und überwachen Sie all Ihre generierten Inserate und deren Performance über ein einziges, intuitives Dashboard.
+Mit Werkaholic AI sparen Sie Zeit, maximieren Ihre Reichweite und steigern die Qualität Ihrer Marktplatz-Präsenz.
 
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
