@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "allow-npm": "node scripts/auto-npm-runner.js",
+    "allow-npm-bat": "scripts/allow-npm.bat",
+    "allow-npm-sh": "scripts/allow-npm.sh"
+  },
   "dependencies": {
     "stripe": "^20.1.2"
   }
