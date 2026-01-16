@@ -1,0 +1,10 @@
+{
+  "language_rules": [
+    {
+      "language": "de",
+      "is_default": true,
+      "enforce_in_responses": true,
+      "enforce_in_code_comments": false
+    }
+  ]
+}

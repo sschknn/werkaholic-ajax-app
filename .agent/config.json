@@ -1,0 +1,13 @@
+{
+  "language": "de",
+  "optimize_for_productivity": true,
+  "enable_advanced_tools": true,
+  "use_mcp_servers": true,
+  "preferred_mode": "code",
+  "enable_fast_apply": true,
+  "max_context_length": 8192,
+  "enable_debugging_support": true,
+  "enable_automatic_updates": false,
+  "enable_telemetry": false,
+  "enable_experimental_features": true
+}
