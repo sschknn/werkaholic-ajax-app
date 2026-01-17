@@ -6,21 +6,36 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDmV1UAivK9_-kVXTOg3Eu51K1EY_mAkk8",
-  authDomain: "werkaholic-ai.firebaseapp.com",
-  projectId: "werkaholic-ai",
-  storageBucket: "werkaholic-ai.firebasestorage.app",
-  messagingSenderId: "906845471256",
-  appId: "1:906845471256:web:ef947e1f640e0a0456796d",
-  measurementId: "G-G454GXK1Z6"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// Check if Firebase config is valid
+const isFirebaseValid = firebaseConfig.apiKey && firebaseConfig.apiKey !== 'your_firebase_api_key_here';
+
+// Initialize Firebase only if config is valid
+let app;
+if (isFirebaseValid) {
+  try {
+    app = initializeApp(firebaseConfig);
+  } catch (error) {
+    console.warn('Firebase initialization failed:', error);
+    app = null;
+  }
+} else {
+  console.warn('Firebase config invalid, running in mock mode');
+  app = null;
+}
+
 // Only initialize analytics in browser environment, not in headless/test environments
 let analytics;
 try {
-  if (typeof window !== 'undefined' && !window.navigator.webdriver) {
+  if (typeof window !== 'undefined' && !window.navigator.webdriver && app) {
     analytics = getAnalytics(app);
   }
 } catch (error) {
@@ -28,9 +43,9 @@ try {
 }
 
 // Initialize Firebase Authentication and get a reference to the service
-export const auth = getAuth(app);
+export const auth = app ? getAuth(app) : null;
 
 // Initialize Cloud Firestore and get a reference to the service
-export const db = getFirestore(app);
+export const db = app ? getFirestore(app) : null;
 
 export default app;
