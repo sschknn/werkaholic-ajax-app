@@ -29,6 +29,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import { AdAnalysis, SalesMetrics } from '../types';
 import { salesTrackingService } from '../services/salesTrackingService';
 import { useAuth } from '../contexts/AuthContext';
+import GoogleAds from './GoogleAds';
 
 interface AnalyticsDashboardProps {
   analysisResults: AdAnalysis[];
@@ -318,6 +319,9 @@ const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
           </Button>
         </div>
       )}
+
+      {/* Google Ads - oben */}
+      <GoogleAds slot="1234567890" format="auto" responsive={true} className="mb-4" />
 
       {/* Main Stats Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
@@ -816,6 +820,9 @@ const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
         ]}
         defaultTab="overview"
       />
+
+      {/* Google Ads - unten */}
+      <GoogleAds slot="9876543210" format="auto" responsive={true} className="mt-8" />
     </div>
   );
 };

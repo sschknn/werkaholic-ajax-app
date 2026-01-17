@@ -1,4 +1,8 @@
 import puppeteer from 'puppeteer';
+import { exec } from 'child_process';
+import { promisify } from 'util';
+
+const execAsync = promisify(exec);
 
 // Helper functions
 async function takeScreenshot(page, name, step) {
@@ -596,7 +600,7 @@ async function runComprehensiveTests() {
     await page.setViewport({ width: 1280, height: 720 });
 
     // Navigate to the app
-    const urls = ['http://localhost:3000', 'http://localhost:8083'];
+    const urls = ['https://werkaholic-ajax-app.vercel.app', 'http://localhost:3000', 'http://localhost:8083'];
     let connected = false;
 
     for (const url of urls) {

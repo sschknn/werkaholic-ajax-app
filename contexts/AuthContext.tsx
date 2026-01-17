@@ -52,7 +52,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const register = async (email: string, password: string) => {
+    console.log('Starting registration for email:', email);
     await createUserWithEmailAndPassword(auth, email, password);
+    console.log('Registration completed for email:', email);
   };
 
   const loginWithGoogle = async () => {

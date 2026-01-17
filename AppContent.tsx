@@ -84,11 +84,11 @@ const AppContent: React.FC = () => {
     setAnalysisResults([]);
   };
 
-  const saveAdResult = (updatedResult: AdAnalysis) => {
+  const saveAdResult = (updatedResult: AdAnalysis, newImageData?: string) => {
     // Update the result in the analysisResults array
     setAnalysisResults(prev =>
       prev.map(result =>
-        result.title === updatedResult.title ? updatedResult : result
+        result.title === updatedResult.title ? { ...updatedResult, image: newImageData || result.image } : result
       )
     );
   };
@@ -138,33 +138,6 @@ const AppContent: React.FC = () => {
 
     loadUserData();
   }, [user?.uid, addNotification]);
-
-  if (loading) {
-    return <Loading message="Authentifizierung läuft..." />;
-  }
-
-  if (!user) {
-    return (
-      <>
-        <div className="min-h-screen bg-slate-900 flex items-center justify-center">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-white mb-8">Werkaholic AI</h1>
-            <p className="text-slate-400 mb-8">KI-gestützte Werbeanalyse</p>
-            <button
-              onClick={modals.openAuthModal}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold text-lg"
-            >
-              Jetzt starten
-            </button>
-          </div>
-        </div>
-        <AuthModal
-          isOpen={modals.showAuthModal}
-          onClose={modals.closeAuthModal}
-        />
-      </>
-    );
-  }
 
   const viewComponents = {
     dashboard: AnalyticsDashboard,
@@ -228,6 +201,33 @@ const AppContent: React.FC = () => {
 
     return <ViewComponent {...props} />;
   };
+
+  if (loading) {
+    return <Loading message="Authentifizierung läuft..." />;
+  }
+
+  if (!user) {
+    return (
+      <>
+        <div className="min-h-screen bg-slate-900 flex items-center justify-center">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold text-white mb-8">Werkaholic AI</h1>
+            <p className="text-slate-400 mb-8">KI-gestützte Werbeanalyse</p>
+            <button
+              onClick={modals.openAuthModal}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold text-lg"
+            >
+              Jetzt starten
+            </button>
+          </div>
+        </div>
+        <AuthModal
+          isOpen={modals.showAuthModal}
+          onClose={modals.closeAuthModal}
+        />
+      </>
+    );
+  }
 
   return (
     <>

@@ -77,9 +77,12 @@ export const SubscriptionProvider: React.FC<{ children: React.ReactNode }> = ({ 
       if (user?.uid) {
         setIsLoading(true);
         try {
+          console.log('Loading subscription for user:', user.uid);
           const userSubscription = await FirestoreService.getUserSubscription(user.uid);
+          console.log('Retrieved subscription data:', userSubscription);
 
           if (userSubscription) {
+            console.log('User has existing subscription, plan:', userSubscription.plan);
             setSubscription({
               plan: userSubscription.plan || 'free',
               scansUsed: userSubscription.scansUsed || 0,
@@ -92,6 +95,7 @@ export const SubscriptionProvider: React.FC<{ children: React.ReactNode }> = ({ 
               monthlyRevenue: userSubscription.monthlyRevenue || 0,
             });
           } else {
+            console.log('No existing subscription found, initializing free plan');
             // Initialize free subscription for new users
             const initialSubscription = {
               plan: 'free' as const,
