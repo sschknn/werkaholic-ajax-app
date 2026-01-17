@@ -1,0 +1,82 @@
+# Liste der erlaubten Befehle für autonome Agenten
+# Diese Befehle sind sicher und effektiv für Unix-Shell und PowerShell
+
+# Unix-Shell Befehle
+ls - Listet Dateien und Verzeichnisse auf
+cd - Wechseln des Verzeichnisses
+pwd - Zeigt das aktuelle Verzeichnis an
+echo - Gibt Text oder Variablen aus
+cat - Zeigt den Inhalt von Dateien an
+grep - Sucht nach Mustern in Dateien
+find - Sucht nach Dateien und Verzeichnissen
+cp - Kopiert Dateien und Verzeichnisse
+mv - Verschiebt oder benennt Dateien und Verzeichnisse um
+rm - Entfernt Dateien und Verzeichnisse
+mkdir - Erstellt ein neues Verzeichnis
+rmdir - Entfernt ein leeres Verzeichnis
+chmod - Ändert die Berechtigungen von Dateien und Verzeichnissen
+chown - Ändert den Besitzer von Dateien und Verzeichnissen
+touch - Erstellt eine neue Datei oder aktualisiert den Zeitstempel
+tar - Erstellt oder extrahiert Archive
+gzip - Komprimiert oder dekomprimiert Dateien
+ps - Zeigt laufende Prozesse an
+kill - Beendet einen Prozess
+
+# Erweiterte Unix-Shell Befehle
+man - Zeigt die Handbuchseite eines Befehls an
+which - Zeigt den Pfad zu einem Befehl an
+whereis - Sucht nach Binärdateien, Quellen und Handbuchseiten
+df - Zeigt die Belegung der Dateisysteme an
+du - Zeigt die Belegung von Verzeichnissen an
+free - Zeigt den Speicherstatus an
+top - Zeigt die laufenden Prozesse in Echtzeit an
+history - Zeigt die Befehlsverlauf an
+uname - Zeigt Systeminformationen an
+whoami - Zeigt den aktuellen Benutzernamen an
+ifconfig - Zeigt oder konfiguriert Netzwerkschnittstellen an
+ping - Testet die Netzwerkverbindung zu einem Host
+netstat - Zeigt Netzwerkverbindungen und Statistiken an
+wget - Lädt Dateien aus dem Internet herunter
+curl - Überträgt Daten von oder zu einem Server
+ssh - Stellt eine sichere Verbindung zu einem Remote-Host her
+scp - Kopiert Dateien sicher zwischen Hosts
+rsync - Synchronisiert Dateien und Verzeichnisse
+
+# PowerShell Befehle
+Get-ChildItem - Listet Dateien und Verzeichnisse auf
+Set-Location - Wechseln des Verzeichnisses
+Get-Location - Zeigt das aktuelle Verzeichnis an
+Write-Output - Gibt Text oder Variablen aus
+Get-Content - Zeigt den Inhalt von Dateien an
+Select-String - Sucht nach Mustern in Dateien
+Copy-Item - Kopiert Dateien und Verzeichnisse
+Move-Item - Verschiebt oder benennt Dateien und Verzeichnisse um
+Remove-Item - Entfernt Dateien und Verzeichnisse
+New-Item - Erstellt ein neues Verzeichnis oder eine neue Datei
+Remove-Item - Entfernt ein leeres Verzeichnis
+Set-ItemProperty - Ändert die Eigenschaften von Dateien und Verzeichnissen
+Get-Process - Zeigt laufende Prozesse an
+Stop-Process - Beendet einen Prozess
+
+# Erweiterte PowerShell Befehle
+Get-Help - Zeigt Hilfeinformationen zu einem Befehl an
+Get-Command - Zeigt Informationen zu verfügbaren Befehlen an
+Get-History - Zeigt den Befehlsverlauf an
+Get-Service - Zeigt die Dienste auf dem System an
+Start-Service - Startet einen Dienst
+Stop-Service - Stoppt einen Dienst
+Restart-Service - Startet einen Dienst neu
+Get-EventLog - Zeigt Ereignisse aus dem Ereignisprotokoll an
+Test-NetConnection - Testet die Netzwerkverbindung zu einem Host
+Invoke-WebRequest - Sendet eine HTTP-Anfrage an einen Webserver
+Invoke-RestMethod - Sendet eine HTTP-Anfrage und analysiert die Antwort
+New-PSDrive - Erstellt ein neues PowerShell-Laufwerk
+Get-PSDrive - Zeigt die verfügbaren PowerShell-Laufwerke an
+Enter-PSSession - Startet eine interaktive Sitzung mit einem Remote-Computer
+Invoke-Command - Führt Befehle auf einem Remote-Computer aus
+
+# Allgemeine Sicherheitshinweise
+- Vermeide die Verwendung von Befehlen, die das System beschädigen könnten (z. B. rm -rf /).
+- Verwende immer relative Pfade, um sicherzustellen, dass Befehle im richtigen Kontext ausgeführt werden.
+- Überprüfe die Berechtigungen von Dateien und Verzeichnissen, bevor du Änderungen vornimmst.
+- Verwende Befehle mit Vorsicht, insbesondere wenn sie Dateien oder Verzeichnisse löschen oder überschreiben.
