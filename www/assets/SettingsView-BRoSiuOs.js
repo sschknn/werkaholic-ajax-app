@@ -1,0 +1,1 @@
+import{j as e}from"./index-Dh_vmfo-.js";const n=()=>e.jsxs("div",{className:"p-8",children:[e.jsx("h1",{className:"text-2xl font-bold",children:"Einstellungen"}),e.jsx("p",{children:"Einstellungen goes here"})]});export{n as SettingsView};

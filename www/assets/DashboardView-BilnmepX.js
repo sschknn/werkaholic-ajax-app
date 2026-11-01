@@ -1,0 +1,1 @@
+import{j as s}from"./index-Dh_vmfo-.js";const r=()=>s.jsxs("div",{className:"p-8",children:[s.jsx("h1",{className:"text-2xl font-bold",children:"Dashboard"}),s.jsx("p",{children:"Dashboard functionality goes here"})]});export{r as DashboardView};

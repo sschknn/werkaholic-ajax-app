@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Werkaholic AI</string>
+    <string name="title_activity_main">Werkaholic AI</string>
+    <string name="package_name">de.frank.werkaholic</string>
+    <string name="custom_url_scheme">de.frank.werkaholic</string>
+</resources>

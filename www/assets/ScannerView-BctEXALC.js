@@ -1,0 +1,1 @@
+import{j as e}from"./index-Dh_vmfo-.js";const r=()=>e.jsxs("div",{className:"p-8",children:[e.jsx("h1",{className:"text-2xl font-bold",children:"Scanner View"}),e.jsx("p",{children:"Scanner functionality goes here"})]});export{r as ScannerView};

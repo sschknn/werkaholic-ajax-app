@@ -1,0 +1,22 @@
+// Firebase Environment Variables
+declare const importMeta: {
+  env: {
+    VITE_FIREBASE_API_KEY: string;
+    VITE_FIREBASE_AUTH_DOMAIN: string;
+    VITE_FIREBASE_PROJECT_ID: string;
+    VITE_FIREBASE_STORAGE_BUCKET: string;
+    VITE_FIREBASE_MESSAGING_SENDER_ID: string;
+    VITE_FIREBASE_APP_ID: string;
+    VITE_FIREBASE_MEASUREMENT_ID: string;
+    VITE_STRIPE_PUBLISHABLE_KEY: string;
+    VITE_GEMINI_API_KEY: string;
+    VITE_EBAY_KLEINANZEIGEN_CLIENT_ID: string;
+    VITE_EBAY_KLEINANZEIGEN_CLIENT_SECRET: string;
+    VITE_EBAY_KLEINANZEIGEN_REDIRECT_URI: string;
+    VITE_EBAY_CLIENT_ID: string;
+    VITE_EBAY_CLIENT_SECRET: string;
+    VITE_EBAY_REDIRECT_URI: string;
+    VITE_FACEBOOK_APP_ID: string;
+    VITE_FACEBOOK_REDIRECT_URI: string;
+  };
+};

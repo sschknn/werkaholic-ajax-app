@@ -1,0 +1,1 @@
+import{j as s}from"./index-Dh_vmfo-.js";const r=()=>s.jsxs("div",{className:"p-8",children:[s.jsx("h1",{className:"text-2xl font-bold",children:"Verlauf"}),s.jsx("p",{children:"Verlaufsansicht goes here"})]});export{r as HistoryView};

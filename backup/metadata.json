@@ -1,8 +1,0 @@
-{
-  "requestFramePermissions": [
-    "camera",
-    "microphone"
-  ],
-  "name": "Werkaholic AI",
-  "description": ""
-}
